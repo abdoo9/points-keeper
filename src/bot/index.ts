@@ -2,6 +2,7 @@ import { autoChatAction } from "@grammyjs/auto-chat-action";
 import { hydrate } from "@grammyjs/hydrate";
 import { hydrateReply, parseMode } from "@grammyjs/parse-mode";
 import { BotConfig, StorageAdapter, Bot as TelegramBot, session } from "grammy";
+import { freeStorage } from "@grammyjs/storage-free";
 import {
   Context,
   SessionData,
@@ -25,7 +26,7 @@ type Options = {
 };
 
 export function createBot(token: string, options: Options = {}) {
-  const { sessionStorage } = options;
+  // const { sessionStorage } = options;
   const bot = new TelegramBot(token, {
     ...options.config,
     ContextConstructor: createContextConstructor({ logger }),
@@ -45,7 +46,7 @@ export function createBot(token: string, options: Options = {}) {
   protectedBot.use(
     session({
       initial: () => ({}),
-      storage: sessionStorage,
+      storage: freeStorage<SessionData>(bot.token),
     }),
   );
   protectedBot.use(i18n);
