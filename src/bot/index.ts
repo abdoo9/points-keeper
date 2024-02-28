@@ -11,6 +11,7 @@ import {
 import {
   adminFeature,
   languageFeature,
+  pointFeature,
   unhandledFeature,
   welcomeFeature,
 } from "#root/bot/features/index.js";
@@ -45,7 +46,7 @@ export function createBot(token: string, options: Options = {}) {
   protectedBot.use(hydrate());
   protectedBot.use(
     session({
-      initial: () => ({}),
+      initial: () => ({ usersPoints: {} }),
       storage: freeStorage<SessionData>(bot.token),
     }),
   );
@@ -54,6 +55,7 @@ export function createBot(token: string, options: Options = {}) {
   // Handlers
   protectedBot.use(welcomeFeature);
   protectedBot.use(adminFeature);
+  protectedBot.use(pointFeature);
 
   if (isMultipleLocales) {
     protectedBot.use(languageFeature);

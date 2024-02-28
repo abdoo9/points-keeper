@@ -5,7 +5,15 @@ language_command =
 setcommands_command =
     .description = Set bot commands
 
-welcome = Welcome!
+welcome = اهلا بك
+    هذا البوت يعمل في المجموعات لتسجيل النقاط في المجموعات
+    الاوامر المتاحة:
+    
+    <code>+1</code> - اضافة نقطة
+    <code>-1</code> - ازالة نقطة
+    <code>ترسيت النقاط</code> - ازالة جميع النقاط
+
+    اوامر اضافة وازالة النقاط يمكن استخدامها مع الرد على رسالة الشخص المراد اضافة او ازالة النقطة منه
 language = 
     .select = Please, select your language
     .changed = Language successfully changed!

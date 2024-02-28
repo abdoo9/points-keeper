@@ -6,8 +6,16 @@ import type { I18nFlavor } from "@grammyjs/i18n";
 import type { ParseModeFlavor } from "@grammyjs/parse-mode";
 import type { Logger } from "#root/logger.js";
 
+type UsersPoints = {
+  [userId: number]: {
+    firstName: string;
+    points: number;
+  };
+};
+
 export type SessionData = {
   // field?: string;
+  usersPoints: UsersPoints;
 };
 
 type ExtendedContextFlavor = {
